@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeskCanvas - HD & 4K Desktop Wallpapers</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="navbar">
+    <div class="logo">
+      <i class="fa-solid fa-desktop"></i>
+      <span>Desk<strong>Canvas</strong></span>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#explore" class="active">Explore</a></li>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#builder">Gradient Creator</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" id="favs-toggle-btn" title="Saved Favorites">
+        <i class="fa-solid fa-heart"></i>
+        <span class="badge" id="fav-count">0</span>
+      </button>
+      <button class="icon-btn" id="theme-toggle-btn" title="Toggle Dark/Light Mode">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Elevate Your Workspace</h1>
+      <p>Discover high-resolution 4K and Ultra-HD wallpapers tailored for desktop setups.</p>
+      
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="search-input" placeholder="Search wallpapers (e.g. Nature, Cyberpunk, Minimalist)...">
+        <button id="clear-search-btn" class="hidden"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="quick-tags">
+        <span>Popular:</span>
+        <button class="tag-btn" data-search="Cyberpunk">Cyberpunk</button>
+        <button class="tag-btn" data-search="Minimal">Minimal</button>
+        <button class="tag-btn" data-search="Space">Space</button>
+        <button class="tag-btn" data-search="Anime">Anime</button>
+        <button class="tag-btn" data-search="Nature">Nature</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Controls -->
+  <section class="filters-section" id="categories">
+    <div class="categories-bar">
+      <button class="category-btn active" data-category="all"><i class="fa-solid fa-border-all"></i> All</button>
+      <button class="category-btn" data-category="nature"><i class="fa-solid fa-tree"></i> Nature</button>
+      <button class="category-btn" data-category="space"><i class="fa-solid fa-user-astronaut"></i> Space</button>
+      <button class="category-btn" data-category="cyberpunk"><i class="fa-solid fa-city"></i> Cyberpunk</button>
+      <button class="category-btn" data-category="abstract"><i class="fa-solid fa-shapes"></i> Abstract</button>
+      <button class="category-btn" data-category="minimal"><i class="fa-solid fa-minus"></i> Minimalist</button>
+      <button class="category-btn" data-category="anime"><i class="fa-solid fa-wand-magic-sparkles"></i> Anime</button>
+    </div>
+
+    <div class="controls-row">
+      <div class="resolution-filters">
+        <label>Resolution:</label>
+        <button class="res-btn active" data-res="all">All</button>
+        <button class="res-btn" data-res="4K">4K Ultra HD</button>
+        <button class="res-btn" data-res="FHD">1080p Full HD</button>
+        <button class="res-btn" data-res="Ultrawide">Ultrawide</button>
+      </div>
+
+      <div class="sort-selector">
+        <label for="sort-select">Sort By:</label>
+        <select id="sort-select">
+          <option value="featured">Featured</option>
+          <option value="popular">Most Downloaded</option>
+          <option value="newest">Newest</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Wallpapers Gallery -->
+  <main class="gallery-container" id="explore">
+    <div class="wallpapers-grid" id="wallpapers-grid">
+      <!-- Wallpapers will be rendered dynamically via JavaScript -->
+    </div>
+    
+    <div id="no-results" class="no-results hidden">
+      <i class="fa-solid fa-image"></i>
+      <h3>No wallpapers found</h3>
+      <p>Try searching for a different keyword or choosing another category.</p>
+      <button class="btn primary-btn" id="reset-filters-btn">Reset All Filters</button>
+    </div>
+  </main>
+
+  <!-- Custom Gradient Creator Section -->
+  <section class="gradient-builder-section" id="builder">
+    <div class="section-header">
+      <h2><i class="fa-solid fa-palette"></i> Custom Gradient Generator</h2>
+      <p>Design and download your own custom gradient desktop wallpaper in high resolution.</p>
+    </div>
+
+    <div class="builder-container">
+      <div class="gradient-preview" id="gradient-preview">
+        <div class="preview-resolution-tag">1920 x 1080</div>
+      </div>
+      <div class="builder-controls">
+        <div class="control-group">
+          <label for="color1">Color 1</label>
+          <input type="color" id="color1" value="#1e3c72">
+        </div>
+        <div class="control-group">
+          <label for="color2">Color 2</label>
+          <input type="color" id="color2" value="#2a5298">
+        </div>
+        <div class="control-group">
+          <label for="gradient-angle">Angle (<span id="angle-val">135</span>°)</label>
+          <input type="range" id="gradient-angle" min="0" max="360" value="135">
+        </div>
+        <button class="btn primary-btn full-width" id="download-gradient-btn">
+          <i class="fa-solid fa-download"></i> Download Gradient (1080p)
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <i class="fa-solid fa-desktop"></i> DeskCanvas
+      </div>
+      <p>Free high quality 4K & HD wallpapers for desktop setups.</p>
+      <p class="copyright">&copy; 2026 DeskCanvas. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal for Full Image Preview -->
+  <div class="modal-overlay hidden" id="preview-modal">
+    <div class="modal-card">
+      <button class="close-modal-btn" id="close-modal"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-media">
+        <img id="modal-img" src="" alt="Wallpaper Preview">
+      </div>
+      <div class="modal-details">
+        <h3 id="modal-title">Wallpaper Title</h3>
+        <p class="modal-meta" id="modal-meta">Category • Resolution</p>
+        
+        <div class="modal-actions">
+          <button class="btn secondary-btn" id="modal-fav-btn">
+            <i class="fa-regular fa-heart"></i> Add to Favorites
+          </button>
+          
+          <div class="dropdown-download">
+            <button class="btn primary-btn" id="modal-download-primary">
+              <i class="fa-solid fa-download"></i> Download 4K
+            </button>
+            <div class="download-options">
+              <a href="#" id="dl-4k" download><i class="fa-solid fa-display"></i> 4K UHD (3840x2160)</a>
+              <a href="#" id="dl-1080p" download><i class="fa-solid fa-laptop"></i> Full HD (1920x1080)</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
